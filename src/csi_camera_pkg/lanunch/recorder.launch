@@ -1,0 +1,11 @@
+<launch>
+    <!-- 启动相机节点 -->
+    <node name="camera_recorder" pkg="my_camera_pkg" type="camera_recorder.py" output="screen" />
+
+    <!-- 启动视频录制节点 -->
+    <node name="video_recorder" pkg="image_view" type="video_recorder" output="screen">
+        <param name="image" value="/camera/image_raw"/>
+        <param name="filename" value="$(arg filename)"/>
+        <param name="cmd" value="x264enc tune=zerolatency bitrate=2000 speed-preset=ultrafast ! mp4mux"/>
+    </node>
+</launch>

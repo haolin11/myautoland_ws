@@ -1,0 +1,16 @@
+<launch>
+
+    <!-- <node name="Mavros_data_sim" pkg="rtk_data_trans" type="Mavros_data_sim" output="screen">
+    </node>
+
+    <node name="RTK_data_sender" pkg="rtk_data_trans" type="RTK_data_sender" output="screen">
+        <param name="endpoints" value="192.168.3.217, 14500; 127.0.0.1, 14552; 192.168.3.188, 14550; 192.168.3.129, 14552"/>
+    </node> -->
+
+    <node name="RTK_data_receiver" pkg="rtk_data_trans" type="RTK_data_receiver" output="screen">
+        <!-- <param name="remote_port" value="14552"/> -->
+        <param name="remote_port" value="14560"/>
+        <remap from="/new/gpsfix" to="/rtk_land_pos/global_position/global"/>
+    </node>
+
+</launch>

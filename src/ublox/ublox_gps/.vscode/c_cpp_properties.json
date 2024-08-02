@@ -1,0 +1,24 @@
+{
+  "configurations": [
+    {
+      "browse": {
+        "databaseFilename": "${default}",
+        "limitSymbolsToIncludedHeaders": false
+      },
+      "includePath": [
+        "/home/amov/lib/ublox/devel/include/**",
+        "/opt/ros/noetic/include/**",
+        "/home/amov/lib/ublox/src/ublox/ublox_gps/include/**",
+        "/home/amov/lib/ublox/src/ublox/ublox_msgs/include/**",
+        "/home/amov/lib/ublox/src/ublox/ublox_serialization/include/**",
+        "/usr/include/**"
+      ],
+      "name": "ROS",
+      "intelliSenseMode": "gcc-arm64",
+      "compilerPath": "/usr/bin/gcc",
+      "cStandard": "gnu11",
+      "cppStandard": "c++14"
+    }
+  ],
+  "version": 4
+}

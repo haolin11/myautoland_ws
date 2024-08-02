@@ -1,0 +1,42 @@
+~/lidar/livox_driver/ws_livox$ sh run.sh
+
+
+## ~/flycar_ws$ roslaunch realsense2_camera rs_camera.launch
+
+
+~/lidar/fast_lio$ roslaunch fast_lio mapping_avia.launch
+
+
+
+~/myautoland_ws$ roslaunch vision_to_mavros t265_tf_to_mavros.launch
+
+
+
+sudo chmod 777 /dev/ttyACM0
+roslaunch mavros px4.launch gcs_url:=udp://@192.168.20.174
+
+
+
+roslaunch usb_cam usb_cam.launch
+~/myautoland_ws$ roslaunch prometheus_demo my_autonomous_landing.launch
+
+开始6通init模式(up), 8channer not land mode，姿态拨杆在position模式，，，解锁，6通pos_control, offboard,  6通command_control
+
+
+
+RTK+d435i+yolo启动顺序
+
+~/myautoland_ws$ source devel/setup.bash
+
+roslaunch realsense2_camera rs_camera.launch
+
+
+~/spirecv-ros$ roslaunch spirecv_ros common_object_detection_d435i.launch
+
+
+sudo chmod 777 /dev/ttyACM0
+roslaunch mavros px4.launch
+
+~/myautoland_ws$ roslaunch rtk_data_trans receiver.launch 
+
+~/myautoland_ws$ roslaunch prometheus_demo TQmy_autonomous_landing.launch
