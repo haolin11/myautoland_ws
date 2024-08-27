@@ -881,7 +881,7 @@ void UAV_estimator::set_RTK_land_pose_cb(const sensor_msgs::NavSatFix::ConstPtr 
     {
         rtk_land_pos.pose.position.x = uav_state.position[0] + enu_offset[0];
         rtk_land_pos.pose.position.y = uav_state.position[1] + enu_offset[1];
-        rtk_land_pos.pose.position.z = uav_state.position[2] + enu_offset[2];
+        rtk_land_pos.pose.position.z = uav_state.position[2] + enu_offset[2] + 0.3;
         // rtk_land_pos.pose.orientation = uav_state.attitude_q;
     }
 

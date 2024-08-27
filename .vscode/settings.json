@@ -77,7 +77,10 @@
         "typeinfo": "cpp",
         "valarray": "cpp",
         "variant": "cpp",
-        "bit": "cpp"
+        "bit": "cpp",
+        "regex": "cpp",
+        "core": "cpp",
+        "specialfunctions": "cpp"
     },
     "todo-tree.tree.showCountsInTree": true,
     "todo-tree.tree.scanMode": "workspace only",

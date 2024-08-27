@@ -1531,7 +1531,7 @@ void UAV_controller::set_rtk_land_pos_cb(const geometry_msgs::PoseStamped::Const
         // set_RTK_des_pose();
         RTK_des_position[0] = msg->pose.position.x;
         RTK_des_position[1] = msg->pose.position.y;
-        RTK_des_position[2] = msg->pose.position.z + 0.3;
+        RTK_des_position[2] = msg->pose.position.z;
         if(RTK_des_position[2]<0.2)
         {
             RTK_des_position[2] = 0.2;
