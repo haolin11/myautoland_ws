@@ -864,26 +864,26 @@ void UAV_estimator::set_RTK_land_pose_cb(const sensor_msgs::NavSatFix::ConstPtr 
     //TODO：需确认ENU坐标系原点为rtk_land_gps还是current_uav_gps
     enu_offset = mavros::ftf::transform_frame_ecef_enu(ecef_offset, rtk_land_gps);
     cout << RED << "enu_offset [X Y Z] : " << ecef_offset[0] << " [ m ] " << ecef_offset[1] << " [ m ] " << ecef_offset[2] << " [ m ] " << TAIL << endl;
-    enu_offsetUAV = mavros::ftf::transform_frame_ecef_enu(ecef_offset, current_uav_gps);
-    cout << RED << "enu_offsetUAV [X Y Z] : " << enu_offsetUAV[0] << " [ m ] " << enu_offsetUAV[1] << " [ m ] " << enu_offsetUAV[2] << " [ m ] " << TAIL << endl;
+    // enu_offsetUAV = mavros::ftf::transform_frame_ecef_enu(ecef_offset, current_uav_gps);
+    // cout << RED << "enu_offsetUAV [X Y Z] : " << enu_offsetUAV[0] << " [ m ] " << enu_offsetUAV[1] << " [ m ] " << enu_offsetUAV[2] << " [ m ] " << TAIL << endl;
 
     geometry_msgs::PoseStamped rtk_land_pos;
     rtk_land_pos.header.stamp = ros::Time::now();
     rtk_land_pos.header.frame_id = "world";
     //TODO：RTK方差过大时使用当前无人机的位置作为RTK_land_pos，需要确认方差合适大小
-    if(msg->position_covariance[0]>0.3 || msg->position_covariance[4]>0.3) //判断降落点RTK信号的稳定性
-    {
-        rtk_land_pos.pose.position.x = uav_state.position[0];
-        rtk_land_pos.pose.position.y = uav_state.position[1];
-        rtk_land_pos.pose.position.z = uav_state.position[2];
-        // rtk_land_pos.pose.orientation = uav_state.attitude_q;
-    }else
-    {
+    // if(msg->position_covariance[0]>0.3 || msg->position_covariance[4]>0.3) //判断降落点RTK信号的稳定性
+    // {
+    //     rtk_land_pos.pose.position.x = uav_state.position[0];
+    //     rtk_land_pos.pose.position.y = uav_state.position[1];
+    //     rtk_land_pos.pose.position.z = uav_state.position[2];
+    //     // rtk_land_pos.pose.orientation = uav_state.attitude_q;
+    // }else
+    // {
         rtk_land_pos.pose.position.x = uav_state.position[0] + enu_offset[0];
         rtk_land_pos.pose.position.y = uav_state.position[1] + enu_offset[1];
-        rtk_land_pos.pose.position.z = uav_state.position[2] + enu_offset[2] + 0.3;
+        rtk_land_pos.pose.position.z = uav_state.position[2] + enu_offset[2] + 3;
         // rtk_land_pos.pose.orientation = uav_state.attitude_q;
-    }
+    // }
 
     //TODO: 更换部分代码，采用过渡点的方法，目前先采用直接发送实际降落点
     // // 计算过渡点相对于无人机的位置偏移量
