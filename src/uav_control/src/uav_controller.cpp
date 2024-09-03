@@ -1532,10 +1532,13 @@ void UAV_controller::set_rtk_land_pos_cb(const geometry_msgs::PoseStamped::Const
         RTK_des_position[0] = msg->pose.position.x;
         RTK_des_position[1] = msg->pose.position.y;
         RTK_des_position[2] = msg->pose.position.z;
-        if(RTK_des_position[2]<0.2)
-        {
-            RTK_des_position[2] = 0.2;
-        }
+        // if(RTK_des_position[2]<0.2)
+        // {
+        //     //TODO: 这里用了降落高度赋值，为什么飞机还是往下飞，需检查降落目标高度
+        //     //打印降落高度
+            cout << RED << "Landing des height: "<< RTK_des_position[2] <<"less than 0.2!" << TAIL << endl;
+        //     RTK_des_position[2] = 0.5;
+        // }
 
         RTK_des_yaw = uav_yaw; 
         
