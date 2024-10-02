@@ -1,0 +1,11 @@
+~/lidar/livox_driver/ws_livox$ sh run.sh
+
+
+
+~/lidar/livox_driver/ws_livox$ roslaunch fast_lio mapping_avia.launch
+
+
+sh start_control_acc_terminals.sh
+
+
+sh start_landpoint.sh

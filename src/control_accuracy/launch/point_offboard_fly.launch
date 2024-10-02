@@ -1,0 +1,7 @@
+<launch>
+	
+   <node pkg="control_accuracy" type="point_offboard_fly" name="point_offboard_fly" output="screen">
+        <rosparam command="load" file="$(find control_accuracy)/config/cfg_point_offboard_fly.yaml" />
+
+   </node>
+</launch>

@@ -1,0 +1,9 @@
+# config.yaml
+
+height: 0.65
+auto_arm_offboard: false
+
+target:
+  x: 5.0       # 目标X坐标
+  y: 0.0       # 目标Y坐标
+  z: 0.65      # 目标Z高度

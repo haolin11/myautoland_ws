@@ -4,7 +4,7 @@
 ## ~/flycar_ws$ roslaunch realsense2_camera rs_camera.launch
 
 
-~/lidar/fast_lio$ roslaunch fast_lio mapping_avia.launch
+~/lidar/livox_driver/ws_livox$ roslaunch fast_lio mapping_avia.launch
 
 
 
